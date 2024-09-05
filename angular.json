@@ -17,7 +17,8 @@
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -27,12 +28,23 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.scss",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [  {
+              "input": "index.js",
+              "inject": false
+            }]
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "indx.js",
+                  "with": "index.prod.js"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -75,7 +87,8 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
